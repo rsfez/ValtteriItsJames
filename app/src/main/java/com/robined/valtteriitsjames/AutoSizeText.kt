@@ -67,6 +67,7 @@ import com.robined.valtteriitsjames.ds.DimensDpSize.dpSizeRoundToIntSize
 import com.robined.valtteriitsjames.ds.DimensInt.intPxToSp
 import com.robined.valtteriitsjames.ds.DimensTextUnit.spRoundToPx
 import com.robined.valtteriitsjames.ds.DimensTextUnit.spToIntPx
+import com.robined.valtteriitsjames.ds.Font.large
 import kotlin.math.min
 
 private const val TAG = "AutoSizeText"
@@ -446,7 +447,7 @@ fun PreviewAutoSizeTextWithMinSizeSetTo14() {
             AutoSizeText(
                 text = "This is a bunch of text that will be auto sized",
                 modifier = Modifier.fillMaxSize(),
-                minTextSize = 14.sp,
+                minTextSize = large,
                 alignment = Alignment.CenterStart,
                 overflow = TextOverflow.Ellipsis,
                 style = MaterialTheme.typography.bodyMedium,

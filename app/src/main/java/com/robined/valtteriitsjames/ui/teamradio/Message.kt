@@ -1,4 +1,4 @@
-package com.robined.valtteriitsjames.ui.message
+package com.robined.valtteriitsjames.ui.teamradio
 
 import android.annotation.SuppressLint
 import androidx.compose.animation.core.LinearEasing
@@ -28,25 +28,24 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import com.robined.valtteriitsjames.domain.Driver
+import com.robined.valtteriitsjames.domain.DriverPreset
 import com.robined.valtteriitsjames.domain.Message
 import com.robined.valtteriitsjames.domain.Message.Type
 import com.robined.valtteriitsjames.domain.Team
-import com.robined.valtteriitsjames.ds.DimensInt.toDp
+import com.robined.valtteriitsjames.ds.Font
+import com.robined.valtteriitsjames.ds.Spacing.xLarge
+import com.robined.valtteriitsjames.ds.Spacing.xxxLarge
 import com.robined.valtteriitsjames.ds.f1Font
 import com.robined.valtteriitsjames.ds.transparent
 import com.robined.valtteriitsjames.ds.white
 import com.robined.valtteriitsjames.ds.white_10
 import com.robined.valtteriitsjames.ds.white_2
 import com.robined.valtteriitsjames.ds.white_20
-import com.robined.valtteriitsjames.ui.TeamRadioUIState
 import com.robined.valtteriitsjames.ui.preview.TeamProvider
 import kotlinx.collections.immutable.persistentListOf
 
 @Composable
-fun MessagesPanel(state: TeamRadioUIState) {
+internal fun MessagesPanel(state: TeamRadioUIState) {
     val team = state.driver.team
     val colorStops = arrayOf(
         0.0f to white_20,
@@ -54,14 +53,14 @@ fun MessagesPanel(state: TeamRadioUIState) {
         0.3f to white_2,
         1f to transparent
     )
-    Box(modifier = Modifier.height(32.toDp()))
+    Box(modifier = Modifier.height(xLarge))
     Column(modifier = Modifier.background(Brush.verticalGradient(colorStops = colorStops))) {
         state.messages.forEach {
             when (it.type) {
                 Type.DRIVER -> DriverMessage(team = team, driverMessage = it.get())
                 Type.TEAM -> TeamMessage(teamMessage = it.get())
             }
-            Box(modifier = Modifier.height(128.toDp()))
+            Box(modifier = Modifier.height(xxxLarge))
         }
     }
 }
@@ -71,7 +70,7 @@ fun MessagesPanel(state: TeamRadioUIState) {
 private fun MessagesPanelPreview() {
     MessagesPanel(
         state = TeamRadioUIState(
-            driver = Driver.VERSTAPPEN,
+            driver = DriverPreset.VERSTAPPEN.driver,
             messages = persistentListOf(
                 Message("Whoa!\nThere's a giant lizard on the track!", type = Type.DRIVER),
                 Message("Came face-to-face with Godzilla there mate", type = Type.TEAM),
@@ -140,13 +139,13 @@ private fun Message(
     Text(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 32.dp)
-            .padding(top = 36.dp),
+            .padding(horizontal = xLarge)
+            .padding(top = xLarge),
         text = text,
         textAlign = textAlign,
         fontFamily = f1Font,
         fontStyle = FontStyle.Italic,
-        fontSize = 28.sp,
+        fontSize = Font.xLarge,
         fontWeight = FontWeight.Bold,
         color = color,
     )

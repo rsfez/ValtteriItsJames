@@ -11,10 +11,13 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
+import com.robined.valtteriitsjames.domain.Driver
 import com.robined.valtteriitsjames.domain.Message
-import com.robined.valtteriitsjames.ui.MessageListType
-import com.robined.valtteriitsjames.ui.TeamRadioUIState
-import com.robined.valtteriitsjames.ui.samples
+import com.robined.valtteriitsjames.ui.teamradio.DriverType
+import com.robined.valtteriitsjames.ui.teamradio.MessageListType
+import com.robined.valtteriitsjames.ui.teamradio.TeamRadioUIState
+import com.robined.valtteriitsjames.ui.home.Home
+import com.robined.valtteriitsjames.ui.teamradio.TeamRadio
 import kotlinx.collections.immutable.ImmutableList
 import kotlin.reflect.typeOf
 
@@ -28,12 +31,18 @@ class MainActivity : ComponentActivity() {
 
                 NavHost(navController = navController, startDestination = Home) {
                     composable<Home> {
-                        Home(onNavigateToRandomTeamRadio = {
-                            navController.navigate(samples.random())
-                        })
+                        Home(
+                            onNavigateToTeamRadio = {
+                                navController.navigate(it)
+                            },
+                            onNavigateToRandomTeamRadio = {
+                                navController.navigate(TeamRadioUIState.Presets.entries.random().state)
+                            }
+                        )
                     }
                     composable<TeamRadioUIState>(
                         typeMap = mapOf(
+                            typeOf<Driver>() to DriverType,
                             typeOf<ImmutableList<Message>>() to MessageListType
                         )
                     ) { navBackStackEntry ->

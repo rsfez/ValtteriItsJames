@@ -7,6 +7,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Message(private val content: String, val type: Type) {
     fun get() = "\"${content.uppercase()}\""
+    fun getNotFormatted() = content
 
     enum class Type {
         TEAM,

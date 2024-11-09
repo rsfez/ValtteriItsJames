@@ -1,4 +1,4 @@
-package com.robined.valtteriitsjames
+package com.robined.valtteriitsjames.ui.teamradio
 
 import android.media.MediaPlayer
 import androidx.compose.foundation.background
@@ -10,17 +10,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.tooling.preview.Preview
-import com.robined.valtteriitsjames.domain.Driver
+import com.robined.valtteriitsjames.R
+import com.robined.valtteriitsjames.domain.DriverPreset
 import com.robined.valtteriitsjames.domain.Message
 import com.robined.valtteriitsjames.domain.Message.Type
 import com.robined.valtteriitsjames.ds.primaryBg
-import com.robined.valtteriitsjames.ui.RadioHeader
-import com.robined.valtteriitsjames.ui.TeamRadioUIState
-import com.robined.valtteriitsjames.ui.message.MessagesPanel
 import kotlinx.collections.immutable.persistentListOf
 
 @Composable
-fun TeamRadio(
+internal fun TeamRadio(
     state: TeamRadioUIState,
     isPreview: Boolean = LocalInspectionMode.current
 ) {
@@ -49,7 +47,7 @@ fun TeamRadio(
 private fun TeamRadioPreview() {
     TeamRadio(
         state = TeamRadioUIState(
-            driver = Driver.NORRIS,
+            driver = DriverPreset.NORRIS.driver,
             messages = persistentListOf(
                 Message("Ahhh, f*ck my championship", type = Type.DRIVER),
             ),
@@ -59,10 +57,10 @@ private fun TeamRadioPreview() {
 
 @Preview
 @Composable
-fun LeclercPreview() {
+private fun LeclercPreview() {
     TeamRadio(
         state = TeamRadioUIState(
-            driver = Driver.LECLERC,
+            driver = DriverPreset.LECLERC.driver,
             messages = persistentListOf(
                 Message("Why am I bouncing so much?", type = Type.DRIVER),
                 Message("We are checking...", type = Type.TEAM),
@@ -73,10 +71,10 @@ fun LeclercPreview() {
 
 @Preview
 @Composable
-fun AlonsoPreview() {
+private fun AlonsoPreview() {
     TeamRadio(
         state = TeamRadioUIState(
-            driver = Driver.ALONSO,
+            driver = DriverPreset.ALONSO.driver,
             messages = persistentListOf(
                 Message("Wow.", type = Type.DRIVER),
             ),
@@ -86,10 +84,10 @@ fun AlonsoPreview() {
 
 @Preview
 @Composable
-fun StrollPreview() {
+private fun StrollPreview() {
     TeamRadio(
         state = TeamRadioUIState(
-            driver = Driver.STROLL,
+            driver = DriverPreset.STROLL.driver,
             messages = persistentListOf(
                 Message("I'm beached.", type = Type.DRIVER),
             ),

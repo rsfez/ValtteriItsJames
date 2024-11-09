@@ -14,8 +14,10 @@ import com.robined.valtteriitsjames.ds.mercedes
 import com.robined.valtteriitsjames.ds.rb
 import com.robined.valtteriitsjames.ds.redBullRacing
 import com.robined.valtteriitsjames.ds.williams
+import kotlinx.serialization.Serializable
 
 @Stable
+@Serializable
 enum class Team(
     val nameContentDescription: String,
     val color: Color,

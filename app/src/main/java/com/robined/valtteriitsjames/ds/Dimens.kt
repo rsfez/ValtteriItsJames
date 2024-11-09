@@ -14,7 +14,24 @@ import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.isSpecified
+import androidx.compose.ui.unit.sp
 import kotlin.math.roundToInt
+
+object Spacing {
+    val xSmall = 4.dp
+    val small = 8.dp
+    val medium = 16.dp
+    var large = 24.dp
+    val xLarge = 32.dp
+    val xxLarge = 48.dp
+    val xxxLarge = 64.dp
+}
+
+object Font {
+    val large = 14.sp
+    val xLarge = 28.sp
+    val xxLarge = 48.sp
+}
 
 object DimensDp {
     fun Density.dpToSp(dp: Dp) = if (dp.isSpecified) dp.toSp() else TextUnit.Unspecified

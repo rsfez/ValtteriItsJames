@@ -1,4 +1,4 @@
-package com.robined.valtteriitsjames.ui
+package com.robined.valtteriitsjames.ui.teamradio
 
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
@@ -30,8 +30,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.res.painterResource
@@ -42,11 +40,17 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.robined.valtteriitsjames.AutoSizeText
 import com.robined.valtteriitsjames.domain.Driver
 import com.robined.valtteriitsjames.domain.Team
 import com.robined.valtteriitsjames.ds.DimensInt.toDp
+import com.robined.valtteriitsjames.ds.Font
+import com.robined.valtteriitsjames.ds.Spacing.large
+import com.robined.valtteriitsjames.ds.Spacing.medium
+import com.robined.valtteriitsjames.ds.Spacing.xLarge
+import com.robined.valtteriitsjames.ds.Spacing.xSmall
+import com.robined.valtteriitsjames.ds.Spacing.xxLarge
+import com.robined.valtteriitsjames.ds.Spacing.xxxLarge
 import com.robined.valtteriitsjames.ds.f1Font
 import com.robined.valtteriitsjames.ds.primaryText
 import com.robined.valtteriitsjames.ds.transparent
@@ -57,7 +61,7 @@ import com.robined.valtteriitsjames.ui.preview.TeamProvider
 import kotlin.math.ln
 
 @Composable
-fun RadioHeader(driver: Driver) {
+internal fun RadioHeader(driver: Driver) {
     val team = driver.team
     val colorStops = arrayOf(
         0.0f to white_5,
@@ -66,9 +70,9 @@ fun RadioHeader(driver: Driver) {
     )
     Column(modifier = Modifier.background(Brush.verticalGradient(colorStops = colorStops))) {
         DriverAndTeamHeader(driver = driver)
-        Box(modifier = Modifier.height(16.toDp()))
+        Box(modifier = Modifier.height(medium))
         AnimatedVerticalBars(team)
-        Box(modifier = Modifier.height(16.toDp()))
+        Box(modifier = Modifier.height(medium))
         HorizontalBar(team)
     }
 }
@@ -85,8 +89,8 @@ private fun DriverAndTeamHeader(driver: Driver) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 32.dp)
-            .padding(top = 24.dp),
+            .padding(horizontal = xLarge)
+            .padding(top = large),
         horizontalAlignment = Alignment.End
     ) {
         var finalTextSize by remember { mutableStateOf(TextUnit.Unspecified) }
@@ -94,7 +98,7 @@ private fun DriverAndTeamHeader(driver: Driver) {
             text = driver.driverName(),
             maxLines = 1,
             softWrap = false,
-            maxTextSize = 48.sp,
+            maxTextSize = Font.xxLarge,
             alignment = Alignment.CenterEnd,
             fontFamily = f1Font,
             fontStyle = FontStyle.Italic,
@@ -111,17 +115,17 @@ private fun DriverAndTeamHeader(driver: Driver) {
                 contentDescription = team.nameContentDescription,
                 modifier = Modifier
                     .height(imageHeightPx.toDp())
-                    .widthIn(min = 0.dp, max = 64.dp)
+                    .widthIn(min = 0.dp, max = xxxLarge)
                     .align(Alignment.CenterVertically),
                 contentScale = ContentScale.Fit
             )
-            Box(modifier = Modifier.width(32.toDp()))
+            Box(modifier = Modifier.width(xLarge))
             Text(
                 text = "RADIO",
                 textAlign = TextAlign.End,
                 fontFamily = f1Font,
                 fontStyle = FontStyle.Italic,
-                fontSize = 48.sp,
+                fontSize = Font.xxLarge,
                 fontWeight = FontWeight.Bold,
                 color = primaryText,
                 modifier = Modifier.onGloballyPositioned { coordinates ->
@@ -144,8 +148,8 @@ private fun AnimatedVerticalBars(team: Team) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .height(48.dp)
-            .padding(horizontal = 24.dp),
+            .height(xxLarge)
+            .padding(horizontal = large),
         verticalAlignment = Alignment.Bottom,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
@@ -177,7 +181,7 @@ private fun AnimatedVerticalBars(team: Team) {
                     .width(6.dp)
                     .height(animatedHeight.dp)
                     .background(color = team.color)
-                    .shadow(elevation = 24.dp, spotColor = team.color)
+                    .shadow(elevation = large, spotColor = team.color)
             )
         }
     }
@@ -194,7 +198,7 @@ private fun HorizontalBar(team: Team) {
     Box(
         modifier = Modifier
             .background(color = team.color)
-            .height(4.dp)
+            .height(xSmall)
             .fillMaxWidth()
     )
 }
