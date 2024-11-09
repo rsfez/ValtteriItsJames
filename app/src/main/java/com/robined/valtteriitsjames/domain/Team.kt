@@ -49,7 +49,7 @@ enum class Team(
         logoResId = R.drawable.aston_martin,
     ),
     RB(
-        nameContentDescription = "Red Bull Visa CashApp",
+        nameContentDescription = "RB",
         color = rb,
         logoResId = R.drawable.rb,
     ),
