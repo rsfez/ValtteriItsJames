@@ -28,6 +28,7 @@ object Spacing {
 }
 
 object Font {
+    val medium = 12.sp
     val large = 14.sp
     val xLarge = 28.sp
     val xxLarge = 48.sp

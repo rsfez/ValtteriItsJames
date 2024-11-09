@@ -10,18 +10,22 @@ appcompat = "1.7.0"
 kotlinxCollectionsImmutable = "0.3.8"
 kotlinxSerializationJson = "1.7.3"
 material = "1.12.0"
+material3 = "1.3.1"
 activity = "1.9.3"
 constraintlayout = "2.2.0"
 navigationCompose = "2.8.3"
+accompanistPermissions = "0.36.0"
+composeUi = "1.7.5"
 
 [libraries]
+accompanist-permissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "accompanistPermissions" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
-androidx-material3 = { module = "androidx.compose.material3:material3" }
+androidx-material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
-androidx-ui = { module = "androidx.compose.ui:ui" }
-androidx-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
-androidx-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
+androidx-ui = { module = "androidx.compose.ui:ui", version.ref = "composeUi" }
+androidx-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "composeUi" }
+androidx-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "composeUi" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }

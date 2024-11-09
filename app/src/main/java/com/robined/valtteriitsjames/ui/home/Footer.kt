@@ -9,12 +9,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import com.robined.valtteriitsjames.R
 import com.robined.valtteriitsjames.domain.Driver
 import com.robined.valtteriitsjames.domain.Message
 import com.robined.valtteriitsjames.domain.Team
+import com.robined.valtteriitsjames.ds.Font
 import com.robined.valtteriitsjames.ds.PrimaryButton
 import com.robined.valtteriitsjames.ds.Spacing.small
 import com.robined.valtteriitsjames.ds.Spacing.xLarge
@@ -60,6 +62,12 @@ internal fun Footer(
                 modifier = Modifier.fillMaxWidth(),
                 onClick = onNavigateToRandomTeamRadio,
                 content = { Text(stringResource(R.string.random_button)) }
+            )
+            Text(
+                text = stringResource(R.string.sharing_hint),
+                color = Color.Gray,
+                fontSize = Font.medium,
+                textAlign = TextAlign.Center
             )
         }
     }
