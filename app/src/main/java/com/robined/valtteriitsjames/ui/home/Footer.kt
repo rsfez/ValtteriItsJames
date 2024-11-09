@@ -39,9 +39,12 @@ internal fun Footer(
                 .padding(bottom = small),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            val enabled = team != null &&
+                    driverName.isNotBlank() &&
+                    messages.filterNot(Message::isEmpty).isNotEmpty()
             PrimaryButton(
                 modifier = Modifier.fillMaxWidth(),
-                enabled = team != null,
+                enabled = enabled,
                 onClick = {
                     onNavigateToTeamRadio(
                         produceTeamRadioUiState(
@@ -55,7 +58,7 @@ internal fun Footer(
             )
             Text(
                 modifier = Modifier.padding(vertical = small),
-                text = "or",
+                text = stringResource(R.string.or),
                 textAlign = TextAlign.Center
             )
             PrimaryButton(
@@ -82,5 +85,5 @@ private fun produceTeamRadioUiState(
         driverName = driverName,
         team = team!!
     ),
-    messages = messages.toPersistentList()
+    messages = messages.filterNot(Message::isEmpty).toPersistentList()
 )

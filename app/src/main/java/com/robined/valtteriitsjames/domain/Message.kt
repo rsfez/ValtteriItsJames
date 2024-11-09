@@ -8,6 +8,7 @@ import kotlinx.serialization.Serializable
 data class Message(private val content: String, val type: Type) {
     fun get() = "\"${content.uppercase()}\""
     fun getNotFormatted() = content
+    fun isEmpty() = content.isEmpty()
 
     enum class Type {
         TEAM,
