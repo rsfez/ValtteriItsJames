@@ -62,6 +62,7 @@ internal fun DriverPresetSelection(
                     onClick = {
                         driverNameState.value = presetState.driver.driverNameNotFormatted()
                         teamState.value = presetState.driver.team
+                        messages.clear()
                         messages.addAll(presetState.messages)
                         driverPresetExpanded = false
                     }
