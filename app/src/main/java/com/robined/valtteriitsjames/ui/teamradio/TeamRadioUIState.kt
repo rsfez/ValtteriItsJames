@@ -35,6 +35,16 @@ internal data class TeamRadioUIState(
                 )
             )
         ),
+        PEREZ(
+            TeamRadioUIState(
+                driver = Driver("Perez", Team.RED_BULL_RACING), messages = persistentListOf(
+                    Message(
+                        "This shows who he really is",
+                        Type.DRIVER
+                    ),
+                )
+            )
+        ),
         NORRIS(
             TeamRadioUIState(
                 driver = Driver("Norris", Team.MC_LAREN), messages = persistentListOf(
@@ -45,7 +55,14 @@ internal data class TeamRadioUIState(
                 )
             )
         ),
-        PIASTRI(TeamRadioUIState(driver = Driver("Piastri", Team.MC_LAREN))),
+        PIASTRI(
+            TeamRadioUIState(
+                driver = Driver("Piastri", Team.MC_LAREN),
+                messages = persistentListOf(
+                    Message("Mate, is Carlos blind or what?", type = Type.DRIVER)
+                )
+            )
+        ),
         LECLERC(
             TeamRadioUIState(
                 driver = Driver("Leclerc", Team.FERRARI), messages = persistentListOf(
@@ -65,13 +82,22 @@ internal data class TeamRadioUIState(
         HAMILTON(
             TeamRadioUIState(
                 driver = Driver("Hamilton", Team.MERCEDES),
-                messages = persistentListOf()
+                messages = persistentListOf(
+                    Message("Lewis the car is bad, we know.\nPlease drive it.", type = Type.TEAM),
+                    Message("...", type = Type.DRIVER)
+                )
             )
         ),
         RUSSELL(
             TeamRadioUIState(
                 driver = Driver("Russell", Team.MERCEDES),
-                messages = persistentListOf()
+                messages = persistentListOf(
+                    Message("George, suggest more management turn 6, turn 6", type = Type.TEAM),
+                    Message(
+                        "I don't know if you can see but I got a car right up my ***",
+                        type = Type.DRIVER
+                    )
+                )
             )
         ),
         ALONSO(
@@ -97,33 +123,67 @@ internal data class TeamRadioUIState(
         TSUNODA(
             TeamRadioUIState(
                 driver = Driver("Tsunoda", Team.RB),
-                messages = persistentListOf()
+                messages = persistentListOf(
+                    Message("Driver swap", type = Type.TEAM),
+                    Message("Are you kidding me, now?", type = Type.DRIVER)
+                )
             )
         ),
         LAWSON(TeamRadioUIState(driver = Driver("Lawson", Team.RB), messages = persistentListOf())),
         HULKENBERG(
             TeamRadioUIState(
                 driver = Driver("Hulkenberg", Team.HAAS),
-                messages = persistentListOf()
+                messages = persistentListOf(
+                    Message("Holy ****! I'm hanging there like a cow.", type = Type.DRIVER)
+                )
             )
         ),
         MAGNUSSEN(
             TeamRadioUIState(
                 driver = Driver("Magnussen", Team.HAAS),
-                messages = persistentListOf()
+                messages = persistentListOf(
+                    Message("Both cars need to save", type = Type.TEAM),
+                    Message("**** that", type = Type.DRIVER)
+                )
             )
         ),
         GASLY(
             TeamRadioUIState(
                 driver = Driver("Gasly", Team.ALPINE),
-                messages = persistentListOf()
+                messages = persistentListOf(
+                    Message("Ciao!", type = Type.DRIVER)
+                )
             )
         ),
-        OCON(TeamRadioUIState(driver = Driver("Ocon", Team.ALPINE), messages = persistentListOf())),
+        OCON(
+            TeamRadioUIState(
+                driver = Driver("Ocon", Team.ALPINE), messages = persistentListOf(
+                    Message("No comment. I am too nice, too nice.", type = Type.DRIVER)
+                )
+            )
+        ),
+        BOTTAS(
+            TeamRadioUIState(
+                driver = Driver("Bottas", Team.KICK_SAUBER),
+                messages = persistentListOf(
+                    Message("Valtteri, it's James...", type = Type.TEAM)
+                )
+            )
+        ),
+        ZHOU(
+            TeamRadioUIState(
+                driver = Driver("Zhou", Team.KICK_SAUBER),
+                messages = persistentListOf(
+                    Message("I need new pants after that!", type = Type.DRIVER)
+                )
+            )
+        ),
         ALBON(
             TeamRadioUIState(
                 driver = Driver("Albon", Team.WILLIAMS),
-                messages = persistentListOf()
+                messages = persistentListOf(
+                    Message("He needs to be penalized this guy! He has to!", type = Type.DRIVER)
+                )
             )
         ),
         COLAPINTO(
