@@ -4,16 +4,16 @@ import androidx.annotation.DrawableRes
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.graphics.Color
 import com.robined.valtteriitsjames.R
-import com.robined.valtteriitsjames.ds.alpine
-import com.robined.valtteriitsjames.ds.astonMartin
-import com.robined.valtteriitsjames.ds.ferrari
-import com.robined.valtteriitsjames.ds.haas
-import com.robined.valtteriitsjames.ds.kickSauber
-import com.robined.valtteriitsjames.ds.mcLaren
-import com.robined.valtteriitsjames.ds.mercedes
-import com.robined.valtteriitsjames.ds.rb
-import com.robined.valtteriitsjames.ds.redBullRacing
-import com.robined.valtteriitsjames.ds.williams
+import com.robined.valtteriitsjames.ds.theme.alpine
+import com.robined.valtteriitsjames.ds.theme.astonMartin
+import com.robined.valtteriitsjames.ds.theme.ferrari
+import com.robined.valtteriitsjames.ds.theme.haas
+import com.robined.valtteriitsjames.ds.theme.kickSauber
+import com.robined.valtteriitsjames.ds.theme.mcLaren
+import com.robined.valtteriitsjames.ds.theme.mercedes
+import com.robined.valtteriitsjames.ds.theme.rb
+import com.robined.valtteriitsjames.ds.theme.redBullRacing
+import com.robined.valtteriitsjames.ds.theme.williams
 import kotlinx.serialization.Serializable
 
 @Stable

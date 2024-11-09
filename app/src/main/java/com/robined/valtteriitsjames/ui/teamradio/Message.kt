@@ -22,8 +22,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
@@ -35,12 +33,12 @@ import com.robined.valtteriitsjames.domain.Team
 import com.robined.valtteriitsjames.ds.Font
 import com.robined.valtteriitsjames.ds.Spacing.xLarge
 import com.robined.valtteriitsjames.ds.Spacing.xxxLarge
-import com.robined.valtteriitsjames.ds.f1Font
-import com.robined.valtteriitsjames.ds.transparent
-import com.robined.valtteriitsjames.ds.white
-import com.robined.valtteriitsjames.ds.white_10
-import com.robined.valtteriitsjames.ds.white_2
-import com.robined.valtteriitsjames.ds.white_20
+import com.robined.valtteriitsjames.ds.theme.messageStyle
+import com.robined.valtteriitsjames.ds.theme.transparent
+import com.robined.valtteriitsjames.ds.theme.white
+import com.robined.valtteriitsjames.ds.theme.white_10
+import com.robined.valtteriitsjames.ds.theme.white_2
+import com.robined.valtteriitsjames.ds.theme.white_20
 import com.robined.valtteriitsjames.ui.preview.TeamProvider
 import kotlinx.collections.immutable.persistentListOf
 
@@ -143,10 +141,8 @@ private fun Message(
             .padding(top = xLarge),
         text = text,
         textAlign = textAlign,
-        fontFamily = f1Font,
-        fontStyle = FontStyle.Italic,
+        style = messageStyle,
         fontSize = Font.xLarge,
-        fontWeight = FontWeight.Bold,
         color = color,
     )
 }

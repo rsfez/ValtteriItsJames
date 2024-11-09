@@ -14,7 +14,7 @@ import com.robined.valtteriitsjames.R
 import com.robined.valtteriitsjames.domain.DriverPreset
 import com.robined.valtteriitsjames.domain.Message
 import com.robined.valtteriitsjames.domain.Message.Type
-import com.robined.valtteriitsjames.ds.primaryBg
+import com.robined.valtteriitsjames.ds.theme.primaryBg
 import kotlinx.collections.immutable.persistentListOf
 
 @Composable

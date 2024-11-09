@@ -33,14 +33,14 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import com.robined.valtteriitsjames.AutoSizeText
+import com.robined.valtteriitsjames.R
 import com.robined.valtteriitsjames.domain.Driver
 import com.robined.valtteriitsjames.domain.Team
 import com.robined.valtteriitsjames.ds.DimensInt.toDp
@@ -51,13 +51,14 @@ import com.robined.valtteriitsjames.ds.Spacing.xLarge
 import com.robined.valtteriitsjames.ds.Spacing.xSmall
 import com.robined.valtteriitsjames.ds.Spacing.xxLarge
 import com.robined.valtteriitsjames.ds.Spacing.xxxLarge
-import com.robined.valtteriitsjames.ds.f1Font
-import com.robined.valtteriitsjames.ds.primaryText
-import com.robined.valtteriitsjames.ds.transparent
-import com.robined.valtteriitsjames.ds.white_2
-import com.robined.valtteriitsjames.ds.white_5
+import com.robined.valtteriitsjames.ds.theme.messageStyle
+import com.robined.valtteriitsjames.ds.theme.primaryText
+import com.robined.valtteriitsjames.ds.theme.transparent
+import com.robined.valtteriitsjames.ds.theme.white_2
+import com.robined.valtteriitsjames.ds.theme.white_5
 import com.robined.valtteriitsjames.ui.preview.DriverProvider
 import com.robined.valtteriitsjames.ui.preview.TeamProvider
+import java.util.Locale
 import kotlin.math.ln
 
 @Composable
@@ -100,9 +101,7 @@ private fun DriverAndTeamHeader(driver: Driver) {
             softWrap = false,
             maxTextSize = Font.xxLarge,
             alignment = Alignment.CenterEnd,
-            fontFamily = f1Font,
-            fontStyle = FontStyle.Italic,
-            fontWeight = FontWeight.Bold,
+            style = messageStyle,
             color = team.color,
             onTextLayout = { textLayoutResult ->
                 finalTextSize = textLayoutResult.layoutInput.style.fontSize
@@ -121,12 +120,10 @@ private fun DriverAndTeamHeader(driver: Driver) {
             )
             Box(modifier = Modifier.width(xLarge))
             Text(
-                text = "RADIO",
+                text = stringResource(R.string.radio).uppercase(Locale.getDefault()),
                 textAlign = TextAlign.End,
-                fontFamily = f1Font,
-                fontStyle = FontStyle.Italic,
+                style = messageStyle,
                 fontSize = Font.xxLarge,
-                fontWeight = FontWeight.Bold,
                 color = primaryText,
                 modifier = Modifier.onGloballyPositioned { coordinates ->
                     imageHeightPx =

@@ -13,11 +13,12 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import com.robined.valtteriitsjames.domain.Driver
 import com.robined.valtteriitsjames.domain.Message
+import com.robined.valtteriitsjames.ds.theme.AppTheme
+import com.robined.valtteriitsjames.ui.home.Home
 import com.robined.valtteriitsjames.ui.teamradio.DriverType
 import com.robined.valtteriitsjames.ui.teamradio.MessageListType
-import com.robined.valtteriitsjames.ui.teamradio.TeamRadioUIState
-import com.robined.valtteriitsjames.ui.home.Home
 import com.robined.valtteriitsjames.ui.teamradio.TeamRadio
+import com.robined.valtteriitsjames.ui.teamradio.TeamRadioUIState
 import kotlinx.collections.immutable.ImmutableList
 import kotlin.reflect.typeOf
 
@@ -26,28 +27,30 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            Box(modifier = Modifier.safeDrawingPadding()) {
-                val navController = rememberNavController()
+            AppTheme(dynamicColor = false) {
+                Box(modifier = Modifier.safeDrawingPadding()) {
+                    val navController = rememberNavController()
 
-                NavHost(navController = navController, startDestination = Home) {
-                    composable<Home> {
-                        Home(
-                            onNavigateToTeamRadio = {
-                                navController.navigate(it)
-                            },
-                            onNavigateToRandomTeamRadio = {
-                                navController.navigate(TeamRadioUIState.Presets.entries.random().state)
-                            }
-                        )
-                    }
-                    composable<TeamRadioUIState>(
-                        typeMap = mapOf(
-                            typeOf<Driver>() to DriverType,
-                            typeOf<ImmutableList<Message>>() to MessageListType
-                        )
-                    ) { navBackStackEntry ->
-                        val state: TeamRadioUIState = navBackStackEntry.toRoute()
-                        TeamRadio(state = state)
+                    NavHost(navController = navController, startDestination = Home) {
+                        composable<Home> {
+                            Home(
+                                onNavigateToTeamRadio = {
+                                    navController.navigate(it)
+                                },
+                                onNavigateToRandomTeamRadio = {
+                                    navController.navigate(TeamRadioUIState.Presets.entries.random().state)
+                                }
+                            )
+                        }
+                        composable<TeamRadioUIState>(
+                            typeMap = mapOf(
+                                typeOf<Driver>() to DriverType,
+                                typeOf<ImmutableList<Message>>() to MessageListType
+                            )
+                        ) { navBackStackEntry ->
+                            val state: TeamRadioUIState = navBackStackEntry.toRoute()
+                            TeamRadio(state = state)
+                        }
                     }
                 }
             }
