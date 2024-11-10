@@ -137,7 +137,16 @@ private fun Message(
     Text(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = xLarge)
+            .padding(
+                start = when (textAlign) {
+                    TextAlign.End -> xxxLarge
+                    else -> xLarge
+                },
+                end = when (textAlign) {
+                    TextAlign.Start -> xxxLarge
+                    else -> xLarge
+                }
+            )
             .padding(top = xLarge),
         text = text,
         textAlign = textAlign,

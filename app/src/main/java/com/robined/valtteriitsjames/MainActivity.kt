@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            AppTheme(dynamicColor = false) {
+            AppTheme {
                 Box(modifier = Modifier.safeDrawingPadding()) {
                     val navController = rememberNavController()
 

@@ -27,7 +27,7 @@ internal fun PrimaryButton(
 @Composable
 @Preview
 fun PrimaryButtonPreview() {
-    AppTheme(dynamicColor = false) {
+    AppTheme {
         PrimaryButton(onClick = {}) {
             Text(text = "Primary Button")
         }

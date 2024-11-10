@@ -14,4 +14,7 @@
 
     <string name="radio">Radio</string>
     <string name="sharing_hint">(Long press the message on the next screen to share it.)</string>
+    <string name="storage_permission_snackbar_message">The storage permission is needed to save the image</string>
+    <string name="storage_permission_snackbar_action_label">Grant Access</string>
+    <string name="share_hint_snackbar_message">Long press anywhere on the screen to share</string>
 </resources>

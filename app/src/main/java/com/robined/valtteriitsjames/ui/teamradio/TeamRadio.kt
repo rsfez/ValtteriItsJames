@@ -7,12 +7,14 @@ import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.graphics.layer.drawLayer
@@ -33,8 +35,9 @@ internal fun TeamRadio(
     state: TeamRadioUIState,
     isPreview: Boolean = LocalInspectionMode.current
 ) {
+    val snackbarHostState = remember { SnackbarHostState() }
     val graphicsLayer = rememberGraphicsLayer()
-    var shareRequested by remember { mutableStateOf(false) }
+    val shareRequested = remember { mutableStateOf(false) }
     val driver = state.driver
 
     if (!isPreview) {
@@ -43,28 +46,37 @@ internal fun TeamRadio(
         LaunchedEffect(Unit) {
             player.start()
         }
-        ImageShare(shareRequested = shareRequested, graphicsLayer = graphicsLayer)
+        ImageShare(
+            shareRequested = shareRequested,
+            graphicsLayer = graphicsLayer,
+            snackbarHostState = snackbarHostState
+        )
     }
 
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(primaryBg)
-            .combinedClickable(
-                onClick = {},
-                onLongClick = { shareRequested = true }
-            )
-    ) {
-        Column(modifier = Modifier
-            .drawWithContent {
-                graphicsLayer.record {
-                    this@drawWithContent.drawContent()
-                }
-                drawLayer(graphicsLayer)
-            }
+    Scaffold(
+        snackbarHost = { SnackbarHost(hostState = snackbarHostState) }
+    ) { padding ->
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(primaryBg)
+                .combinedClickable(
+                    onClick = {},
+                    onLongClick = { shareRequested.value = true }
+                ),
         ) {
-            RadioHeader(driver)
-            MessagesPanel(state)
+            Column(modifier = Modifier
+                .padding(padding)
+                .drawWithContent {
+                    graphicsLayer.record {
+                        this@drawWithContent.drawContent()
+                    }
+                    drawLayer(graphicsLayer)
+                }
+            ) {
+                RadioHeader(driver)
+                MessagesPanel(state)
+            }
         }
     }
 }
