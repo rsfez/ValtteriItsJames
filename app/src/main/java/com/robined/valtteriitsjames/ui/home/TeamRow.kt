@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.robined.valtteriitsjames.domain.Team
+import com.robined.valtteriitsjames.ds.Spacing.medium
 
 @Composable
 internal fun TeamRow(team: Team) {
@@ -22,7 +23,7 @@ internal fun TeamRow(team: Team) {
                 .fillMaxHeight()
                 .background(team.color)
         )
-        Box(modifier = Modifier.width(16.dp))
+        Box(modifier = Modifier.width(medium))
         Text(team.nameContentDescription)
     }
 }

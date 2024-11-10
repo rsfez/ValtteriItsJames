@@ -1,17 +1,17 @@
 <resources>
     <string name="app_name">Dear Pewis</string>
 
-    <string name="driver">Driver</string>
+    <string name="driver_preset">Driver preset</string>
+    <string name="choose_a_driver_preset_button">Choose</string>
+    <string name="random_preset_button">Random</string>
+    <string name="drivers_name">Driver\'s name</string>
     <string name="messages">Messages:</string>
     <string name="choose_a_team_button">Choose a team</string>
-    <string name="select_a_driver_preset_button">Select a driver preset</string>
     <string name="delete_content_description">Delete</string>
     <string name="add_content_description">Add</string>
     <string name="add_new_message_button">Add new message</string>
     <string name="go_button">Go!</string>
-    <string name="random_button">Random!</string>
 
     <string name="radio">Radio</string>
     <string name="sharing_hint">(Long press the message on the next screen to share it.)</string>
-    <string name="or">or</string>
 </resources>

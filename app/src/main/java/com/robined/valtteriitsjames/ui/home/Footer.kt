@@ -29,7 +29,6 @@ internal fun Footer(
     team: Team?,
     messages: SnapshotStateList<Message>,
     onNavigateToTeamRadio: (TeamRadioUIState) -> Unit,
-    onNavigateToRandomTeamRadio: () -> Unit
 ) {
     Box(modifier = Modifier.fillMaxWidth()) {
         Column(
@@ -55,16 +54,6 @@ internal fun Footer(
                     )
                 },
                 content = { Text(stringResource(R.string.go_button)) }
-            )
-            Text(
-                modifier = Modifier.padding(vertical = small),
-                text = stringResource(R.string.or),
-                textAlign = TextAlign.Center
-            )
-            PrimaryButton(
-                modifier = Modifier.fillMaxWidth(),
-                onClick = onNavigateToRandomTeamRadio,
-                content = { Text(stringResource(R.string.random_button)) }
             )
             Text(
                 text = stringResource(R.string.sharing_hint),

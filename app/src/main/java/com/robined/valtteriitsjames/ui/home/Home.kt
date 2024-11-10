@@ -1,10 +1,14 @@
 package com.robined.valtteriitsjames.ui.home
 
 import android.os.Bundle
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -16,9 +20,13 @@ import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import com.robined.valtteriitsjames.R
 import com.robined.valtteriitsjames.domain.Message
 import com.robined.valtteriitsjames.domain.Team
+import com.robined.valtteriitsjames.ds.PrimaryButton
+import com.robined.valtteriitsjames.ds.Spacing.large
+import com.robined.valtteriitsjames.ds.Spacing.small
 import com.robined.valtteriitsjames.ds.Spacing.xLarge
 import com.robined.valtteriitsjames.ui.teamradio.MessageListType
 import com.robined.valtteriitsjames.ui.teamradio.TeamRadioUIState
@@ -31,11 +39,17 @@ object Home
 @Composable
 internal fun Home(
     onNavigateToTeamRadio: (TeamRadioUIState) -> Unit,
-    onNavigateToRandomTeamRadio: () -> Unit
 ) {
     val driverNameState = rememberSaveable { mutableStateOf("") }
     val teamState = rememberSaveable { mutableStateOf<Team?>(null) }
     val messages = rememberMessages()
+
+    val onPresetSelected: (TeamRadioUIState) -> Unit = { preset ->
+        driverNameState.value = preset.driver.driverNameNotFormatted()
+        teamState.value = preset.driver.team
+        messages.clear()
+        messages.addAll(preset.messages)
+    }
 
     Scaffold(bottomBar = {
         Footer(
@@ -43,7 +57,6 @@ internal fun Home(
             team = teamState.value,
             messages = messages,
             onNavigateToTeamRadio = onNavigateToTeamRadio,
-            onNavigateToRandomTeamRadio = onNavigateToRandomTeamRadio
         )
     }) { contentPadding ->
         Column(
@@ -52,16 +65,28 @@ internal fun Home(
                 .padding(top = xLarge + contentPadding.calculateTopPadding())
                 .padding(bottom = contentPadding.calculateBottomPadding())
         ) {
-            DriverPresetSelection(
-                driverNameState = driverNameState,
-                teamState = teamState,
-                messages = messages
+            Text(
+                modifier = Modifier.padding(vertical = small),
+                text = stringResource(R.string.driver_preset),
+                textAlign = TextAlign.Center
             )
-            Box(modifier = Modifier.height(xLarge))
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
+                DriverPresetSelection(
+                    onPresetSelected = onPresetSelected,
+                )
+                PrimaryButton(
+                    onClick = { onPresetSelected(TeamRadioUIState.Presets.entries.random().state) },
+                    content = { Text(stringResource(R.string.random_preset_button)) }
+                )
+            }
+            HorizontalDivider(modifier = Modifier.padding(vertical = large))
             TextField(
                 value = driverNameState.value,
                 onValueChange = { driverNameState.value = it },
-                label = { Text(stringResource(R.string.driver)) }
+                label = { Text(stringResource(R.string.drivers_name)) }
             )
             Box(modifier = Modifier.height(xLarge))
             TeamSelection(teamState = teamState)

@@ -37,9 +37,6 @@ class MainActivity : ComponentActivity() {
                                 onNavigateToTeamRadio = {
                                     navController.navigate(it)
                                 },
-                                onNavigateToRandomTeamRadio = {
-                                    navController.navigate(TeamRadioUIState.Presets.entries.random().state)
-                                }
                             )
                         }
                         composable<TeamRadioUIState>(
