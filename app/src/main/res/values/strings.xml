@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Dear Pewis</string>
+    <string name="app_name">Pewis</string>
 
     <string name="driver_preset">Driver preset</string>
     <string name="choose_a_driver_preset_button">Choose</string>

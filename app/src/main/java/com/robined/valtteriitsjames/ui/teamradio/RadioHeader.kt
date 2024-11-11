@@ -118,7 +118,7 @@ private fun DriverAndTeamHeader(driver: Driver) {
                     .align(Alignment.CenterVertically),
                 contentScale = ContentScale.Fit
             )
-            Box(modifier = Modifier.width(xLarge))
+            Box(modifier = Modifier.width(medium))
             Text(
                 text = stringResource(R.string.radio).uppercase(Locale.getDefault()),
                 textAlign = TextAlign.End,
